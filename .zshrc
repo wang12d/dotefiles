@@ -1,17 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
-export GOPATH=/home/wang/go
-export GOLAND=/home/wang/Documents/GoLand-2020.2.3
+export GOPATH=/home/$USER/go
+export GOLAND=/home/$USER/Documents/GoLand-2020.2.3
 export PATH=$GOLAND/bin:$GOPATH/src/github.com/ethereum/go-ethereum/build/bin:/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH=$PATH:/usr/local/go/bin
 # Path to your oh-my-zsh installation.
-export ZSH="/home/wang/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
-ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,12 +81,9 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(
 git
 virtualenv
-zsh-syntax-highlighting
 zsh-autosuggestions
+zsh-syntax-highlighting
 )
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status virtualenv time)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir ram root_indicator)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -113,11 +117,11 @@ export SERVERTWO=114.212.10.217
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias go="http_proxy=127.0.0.1:12333 go"
+alias go="http_proxy=127.0.0.1:7890 go"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# PATH=/home/wang/bin:/usr/local/bin:/home/wang/Downloads/swift-5.1.2-RELEASE-ubuntu18.04/usr/bin:/home/wang/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin/
-. /home/wang/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# PATH=/home/$USER/bin:/usr/local/bin:/home/$USER/Downloads/swift-5.1.2-RELEASE-ubuntu18.04/usr/bin:/home/$USER/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin/
+. /home/$USER/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -140,3 +144,6 @@ eval
                 test -n "$TF_CMD" && print -s $TF_CMD
             }
         
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
